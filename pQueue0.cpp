@@ -4,7 +4,7 @@ PQueue::PQueue() {
     _size = 0;
 }
 
-// Remember to call buildHeap() after insertion
+// Remember to call moveUp() after insertion
 void PQueue::insert(T val) {
     if (_size == 0) {
         _array[1] == val;
