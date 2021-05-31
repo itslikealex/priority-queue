@@ -83,3 +83,8 @@ T PQueue::findMin() {
         return;
     }
 }
+
+
+int PQueue::size() {
+    return _size;
+}
