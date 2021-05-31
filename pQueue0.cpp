@@ -17,6 +17,19 @@ void PQueue::insert(T val) {
     }
 }
 
+
+// Start with last non-leaf node, and call moveDown().
+// Continue with each index to the left, stopping after moveDown() is called on root.
+void PQueue::buildHeap() {
+    int floydIndex = _size / 2;
+    while (floydIndex >= 1) {
+        moveDown(floydIndex);
+        floydIndex--;
+    }
+    return;
+}
+
+
 // If a child is less than its parent, swap positions since min heap property is violated.
 void PQueue::moveUp() {
     int childIndex = _size;
