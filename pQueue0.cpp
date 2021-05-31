@@ -44,6 +44,7 @@ void PQueue::moveUp() {
 void PQueue::moveDown(int i) {
     if ((i * 2) + 1 > _size) {  // No children, return.
         return;
+    }
 
     int parentVal;
     int parentIndex = i;
@@ -76,7 +77,6 @@ void PQueue::moveDown(int i) {
 }
 
 
-/*
 T PQueue::findMin() {
     if (_size != 0) {
         return _array[1];
@@ -84,4 +84,3 @@ T PQueue::findMin() {
         return;
     }
 }
-*/
