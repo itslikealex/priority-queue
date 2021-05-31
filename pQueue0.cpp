@@ -77,10 +77,19 @@ void PQueue::moveDown(int i) {
 
 
 T PQueue::findMin() {
-    if (_size != 0) {
+    if (size() != 0) {
         return _array[1];
     } else {
         return;
+    }
+}
+
+
+bool PQueue::isEmpty() {
+    if (size() == 0) {
+        return true;
+    } else {
+        return false;
     }
 }
 
