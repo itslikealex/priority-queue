@@ -85,6 +85,17 @@ T PQueue::findMin() {
 }
 
 
+// Replace root element with last element, then call moveDown() on it.
+void PQueue::deleteMin() {
+    if (isEmpty() == true) {
+        return;
+    }
+    _array[1] = _array[_size];
+    _size--;
+    moveDown(1);
+}
+
+
 bool PQueue::isEmpty() {
     if (size() == 0) {
         return true;
