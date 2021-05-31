@@ -1,4 +1,3 @@
-#include <climits>
 #include "PQueue0.h"
 
 PQueue::PQueue() {
