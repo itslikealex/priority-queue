@@ -1,3 +1,4 @@
+#include <climits>
 #include "PQueue0.h"
 
 PQueue::PQueue() {
@@ -20,11 +21,10 @@ void PQueue::insert(T val) {
 // If a child is less than its parent, swap positions since min heap property is violated.
 void PQueue::moveUp() {
     int childIndex = _size;
-    int parentIndex = _size / 2;   // int division finds parent index since flooring occurs
+    int parentIndex = _size / 2;   // int division finds parent index since flooring occurs.
     int childVal = _array[childIndex];
     int parentVal = _array[parentIndex];
     int tempVal;
-    int tempIndex;
     while (childVal < parentVal) {
         tempVal = parentVal;
         parentVal = childVal;
@@ -39,6 +39,42 @@ void PQueue::moveUp() {
     }
     return;
 }
+
+
+void PQueue::moveDown(int i) {
+    if ((i * 2) + 1 > _size) {  // No children, return.
+        return;
+
+    int parentVal;
+    int parentIndex = i;
+    int childLeftIndex = parentIndex * 2;
+    int childRightIndex = (parentIndex * 2) + 1;
+    int childLeftVal;
+    int childRightVal;
+    int tempVal;
+
+    while ((_array[parentIndex] < _array[childLeftIndex] || _array[parentIndex] < _array[childRightIndex]) && (childRightIndex <= _size)) {
+        parentVal = _array[parentIndex];
+        childLeftVal = _array[childLeftIndex];
+        childRightVal = _array[childRightIndex];
+        if (childLeftVal <= childRightVal) {
+            tempVal = childLeftVal;
+            childLeftVal = parentVal;
+            parentVal = tempVal;
+            parentIndex = childLeftIndex;
+        } else {
+            tempVal = childRightVal;
+            childRightVal = parentVal;
+            parentVal = tempVal;
+            parentIndex = childRightIndex;
+        }
+        childLeftIndex = parentIndex * 2;
+        childRightIndex = (parentIndex * 2) + 1;
+    }
+
+    return;
+}
+
 
 /*
 T PQueue::findMin() {
