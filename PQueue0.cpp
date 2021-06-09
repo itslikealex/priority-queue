@@ -90,11 +90,7 @@ void PQueue::moveDown(int i) {
 
 
 T PQueue::findMin() {
-    if (size() != 0) {
-        return _array[1];
-    } else {
-        return;
-    }
+    return _array[1];
 }
 
 
