@@ -42,17 +42,13 @@ void PQueue::buildHeap() {
 void PQueue::moveUp() {
     int childIndex = _size;
     int parentIndex = _size / 2;   // int division finds parent index since flooring occurs.
-    int childVal = _array[childIndex];
-    int parentVal = _array[parentIndex];
     int tempVal;
-    while (childVal < parentVal) {
-        tempVal = parentVal;
-        parentVal = childVal;
-        childVal = tempVal;
+    while (_array[childIndex] < _array[parentIndex]) {
+        tempVal = _array[parentIndex];
+        _array[parentIndex] = _array[childIndex];
+        _array[childIndex] = tempVal;
         childIndex = parentIndex;
         parentIndex = parentIndex / 2;
-        childVal = _array[childIndex];
-        parentVal = _array[parentIndex];
         if (parentIndex == 0) {
             return;
         }
