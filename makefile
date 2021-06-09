@@ -1,4 +1,4 @@
-CXX=g++
+CXX=g++ -g
 
 all: PQueue0.o testPQ
 
