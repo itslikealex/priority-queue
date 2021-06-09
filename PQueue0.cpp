@@ -4,6 +4,14 @@ PQueue::PQueue() {
     _size = 0;
 }
 
+PQueue::PQueue(int* items, int size) {
+    _size = 0;
+
+    for (int i = 0; i < size; i++) {
+        insert(items[i]);
+    }
+}
+
 void PQueue::insert(T val) {
     if (_size == 0) {
         _array[1] == val;
