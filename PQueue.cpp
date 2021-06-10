@@ -66,27 +66,21 @@ void PQueue<T, MAX_SIZE>::moveDown(int i) {
         return;
     }
 
-    int parentVal;
     int parentIndex = i;
     int childLeftIndex = parentIndex * 2;
     int childRightIndex = (parentIndex * 2) + 1;
-    int childLeftVal;
-    int childRightVal;
     int tempVal;
 
     while ((_array[parentIndex] < _array[childLeftIndex] || _array[parentIndex] < _array[childRightIndex]) && (childRightIndex <= _size)) {
-        parentVal = _array[parentIndex];
-        childLeftVal = _array[childLeftIndex];
-        childRightVal = _array[childRightIndex];
-        if (childLeftVal <= childRightVal) {
-            tempVal = childLeftVal;
-            childLeftVal = parentVal;
-            parentVal = tempVal;
+        if (_array[childLeftIndex] <= _array[childRightIndex]) {
+            tempVal = _array[childLeftIndex];
+            _array[childLeftIndex] = _array[parentIndex];
+            _array[parentIndex] = tempVal;
             parentIndex = childLeftIndex;
         } else {
-            tempVal = childRightVal;
-            childRightVal = parentVal;
-            parentVal = tempVal;
+            tempVal = _array[childRightIndex];
+            _array[childRightIndex] = _array[parentIndex];
+            _array[parentIndex] = tempVal;
             parentIndex = childRightIndex;
         }
         childLeftIndex = parentIndex * 2;
