@@ -14,7 +14,7 @@ PQueue::PQueue(int* items, int size) {
 
 void PQueue::insert(T val) {
     if (_size == 0) {
-        _array[1] == val;
+        _array[1] = val;
         _size++;
     } else if (_size < (MAX_SIZE)) {
         _array[_size + 1] = val;
