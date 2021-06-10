@@ -1,10 +1,10 @@
-#include "PQueue0.h"
-
-PQueue::PQueue() {
+template< class T, int MAX_SIZE >
+PQueue<T, MAX_SIZE>::PQueue() {
     _size = 0;
 }
 
-PQueue::PQueue(int* items, int size) {
+template< class T, int MAX_SIZE >
+PQueue<T, MAX_SIZE>::PQueue(T* items, int size) {
     _size = 0;
 
     for (int i = 0; i < size; i++) {
@@ -12,7 +12,8 @@ PQueue::PQueue(int* items, int size) {
     }
 }
 
-void PQueue::insert(T val) {
+template< class T, int MAX_SIZE >
+void PQueue<T, MAX_SIZE>::insert(T val) {
     if (_size == 0) {
         _array[1] = val;
         _size++;
@@ -28,7 +29,8 @@ void PQueue::insert(T val) {
 
 // Start with last non-leaf node, and call moveDown().
 // Continue with each index to the left, stopping after moveDown() is called on root.
-void PQueue::buildHeap() {
+template< class T, int MAX_SIZE >
+void PQueue<T, MAX_SIZE>::buildHeap() {
     int floydIndex = _size / 2;
     while (floydIndex >= 1) {
         moveDown(floydIndex);
@@ -39,7 +41,8 @@ void PQueue::buildHeap() {
 
 
 // If a child is less than its parent, swap positions since min heap property is violated.
-void PQueue::moveUp() {
+template< class T, int MAX_SIZE >
+void PQueue<T, MAX_SIZE>::moveUp() {
     int childIndex = _size;
     int parentIndex = _size / 2;   // int division finds parent index since flooring occurs.
     int tempVal;
@@ -57,7 +60,8 @@ void PQueue::moveUp() {
 }
 
 
-void PQueue::moveDown(int i) {
+template< class T, int MAX_SIZE >
+void PQueue<T, MAX_SIZE>::moveDown(int i) {
     if ((i * 2) + 1 > _size) {  // No children, return.
         return;
     }
@@ -93,13 +97,15 @@ void PQueue::moveDown(int i) {
 }
 
 
-T PQueue::findMin() {
+template< class T, int MAX_SIZE >
+T PQueue<T, MAX_SIZE>::findMin() {
     return _array[1];
 }
 
 
 // Replace root element with last element, then call moveDown() on it.
-void PQueue::deleteMin() {
+template< class T, int MAX_SIZE >
+void PQueue<T, MAX_SIZE>::deleteMin() {
     if (isEmpty() == true) {
         return;
     }
@@ -109,7 +115,8 @@ void PQueue::deleteMin() {
 }
 
 
-bool PQueue::isEmpty() {
+template< class T, int MAX_SIZE >
+bool PQueue<T, MAX_SIZE>::isEmpty() {
     if (size() == 0) {
         return true;
     } else {
@@ -118,6 +125,7 @@ bool PQueue::isEmpty() {
 }
 
 
-int PQueue::size() {
+template< class T, int MAX_SIZE >
+int PQueue<T, MAX_SIZE>::size() {
     return _size;
 }
