@@ -1,3 +1,13 @@
+/**  CS515 Lab 6
+        File: PQueue.cpp
+        Name: Andrew Fischer
+        Section: 1
+        Date: 6/16/21
+        Collaboration Declaration:
+            Contacted Prof. Plumlee over Discord to clarify special case handling in void functions.
+*/
+
+
 template< class T, int MAX_SIZE >
 PQueue<T, MAX_SIZE>::PQueue() {
     _size = 0;
@@ -62,16 +72,12 @@ void PQueue<T, MAX_SIZE>::moveUp() {
 
 template< class T, int MAX_SIZE >
 void PQueue<T, MAX_SIZE>::moveDown(int i) {
-    if ((i * 2) + 1 > _size) {  // No children, return.
-        return;
-    }
-
     int parentIndex = i;
     int childLeftIndex = parentIndex * 2;
     int childRightIndex = (parentIndex * 2) + 1;
     int tempVal;
 
-    while ((_array[parentIndex] < _array[childLeftIndex] || _array[parentIndex] < _array[childRightIndex]) && (childRightIndex <= _size)) {
+    while ((_array[parentIndex] > _array[childLeftIndex] && childRightIndex <= _size) || (_array[parentIndex] > _array[childRightIndex] && (childRightIndex <= _size))) {
         if (_array[childLeftIndex] <= _array[childRightIndex]) {
             tempVal = _array[childLeftIndex];
             _array[childLeftIndex] = _array[parentIndex];
