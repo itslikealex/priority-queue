@@ -24,6 +24,5 @@ private:
     void moveUp(); // move up the last element in the heap array
 };
 
-#include "PQueue.cpp"
 
 #endif
